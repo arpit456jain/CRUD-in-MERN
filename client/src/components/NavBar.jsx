@@ -19,8 +19,8 @@ export default function NavBar() {
     <Header position="static">
         <ToolBar>
             <Tabs to="/">Codesmashers</Tabs>
-            <Tabs to="add">All Users</Tabs>
-            <Tabs to="all">Add User</Tabs>
+            <Tabs to="all">All Users</Tabs>
+            <Tabs to="add">Add User</Tabs>
         </ToolBar>
     </Header>
   )

@@ -4,7 +4,7 @@ import NavBar from './components/NavBar'
 import CodeSmashers from './components/CodeSmashers'
 import AllUsres from './components/AllUsres'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
+import './App.css'
 function App() {
   return (
     <BrowserRouter>
