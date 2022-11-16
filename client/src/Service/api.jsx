@@ -14,7 +14,7 @@ export const addUser = async (data) => {
 
 export const editUser = async (data,id) => {
     try{
-        return await axios.post(`${usersUrl}/${id}`, data);
+        return await axios.put(`${usersUrl}/${id}`, data);
     }
     catch(err){
         console.error(err);
@@ -34,9 +34,22 @@ export const getUsers = async () => {
 
 export const getUser = async (id) => {
     try{
-        console.log("in edit get user",usersUrl,id);
+        
         let res = await axios.get(`${usersUrl}/${id}`);
-        console.log("the res i am geetning",res);
+        
+        return res;
+    }
+    catch(err){
+        console.error("getting an eerror",err);
+    }
+    
+}
+
+export const deleteUser = async (id) => {
+    try{
+        console.log("deleting the user",id);
+        let res = await axios.delete(`${usersUrl}/delete/${id}`);
+    
         return res;
     }
     catch(err){

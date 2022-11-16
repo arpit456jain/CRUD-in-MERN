@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from 'react';
 import { Table, TableHead, TableCell, Paper, TableRow, TableBody, Button, styled } from '@mui/material'
-import {getUsers}   from '../Service/api'
+import {deleteUser, getUsers}   from '../Service/api'
 import {Link} from 'react-router-dom';
 export default function AllUsres() {
 
@@ -14,6 +14,12 @@ const getAllUsers = async () => {
   let response = await getUsers();
   console.log(response);
   setUsers(response.data);
+}
+function deleteU(id)
+{
+  console.log(id,"for delet");
+  deleteUser(id);
+  getAllUsers();
 }
   return (
     <Table>
@@ -29,8 +35,9 @@ const getAllUsers = async () => {
                     </TableRow>
       </TableHead>
       <TableBody>
-          {users.map((row) => (
-            <TableRow>  
+
+          {users.length<=0 ?<div style={{justifyItems:"center"}}>Nothing to Display</div> : users.map((row) => (
+            <TableRow key={row._id}>  
               <TableCell>{row._id}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.username}</TableCell>
@@ -38,7 +45,7 @@ const getAllUsers = async () => {
               <TableCell>{row.email}</TableCell>
               <TableCell>
                 <Button variant="contained" style={{marginRight:10}} component={Link} to={`/edit/${row._id}`}>Edit</Button>
-                <Button variant="contained" color="secondary" >Delete</Button>
+                <Button variant="contained" color="secondary" onClick={()=>deleteU(row._id)}>Delete</Button>
               </TableCell>
             </TableRow>
           ))}

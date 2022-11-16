@@ -41,7 +41,7 @@ router.get('/:id',async(request,response)=>{
     }
 
 })
-router.post('/:id',async(request,response)=>{
+router.put('/:id',async(request,response)=>{
     const user = request.body;
     const newUser = new postUser(user);
     
@@ -56,3 +56,15 @@ router.post('/:id',async(request,response)=>{
 
 })
 export default router;
+
+router.delete('/delete/:id',async(request,response)=>{
+    
+    try{
+        // const users = await postUser.find({username: 'jfyjkk'});
+        await postUser.remove({_id : request.params.id});
+        response.status(200).json(users);
+    } catch (error){
+        response.status(409).json({ message: error.message});     
+    }
+
+})
