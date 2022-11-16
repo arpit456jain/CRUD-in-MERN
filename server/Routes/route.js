@@ -17,4 +17,16 @@ router.post('/add',async(request,response)=>{
 
 })
 
+router.get('/all',async(request,response)=>{
+    
+    try{
+        // const users = await postUser.find({username: 'jfyjkk'});
+        const users = await postUser.find({});
+        response.status(200).json(users);
+    } catch (error){
+        response.status(409).json({ message: error.message});     
+    }
+
+})
+
 export default router;
