@@ -1,6 +1,7 @@
 import react, { useState, useEffect } from 'react';
 import { Table, TableHead, TableCell, Paper, TableRow, TableBody, Button, styled } from '@mui/material'
 import {getUsers}   from '../Service/api'
+import {Link} from 'react-router-dom';
 export default function AllUsres() {
 
   const [users , setUsers] = useState([]);
@@ -36,7 +37,7 @@ const getAllUsers = async () => {
               <TableCell>{row.phone}</TableCell>
               <TableCell>{row.email}</TableCell>
               <TableCell>
-                <Button variant="contained" style={{marginRight:10}}>Edit</Button>
+                <Button variant="contained" style={{marginRight:10}} component={Link} to={`/edit/${row._id}`}>Edit</Button>
                 <Button variant="contained" color="secondary" >Delete</Button>
               </TableCell>
             </TableRow>

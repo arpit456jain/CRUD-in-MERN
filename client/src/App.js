@@ -1,5 +1,6 @@
 
 import AddUser from './components/AddUser'
+import EditUser from './components/EditUser'
 import NavBar from './components/NavBar'
 import CodeSmashers from './components/CodeSmashers'
 import AllUsres from './components/AllUsres'
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<CodeSmashers /> } />
       <Route path="/add" element={<AddUser /> } />
       <Route path="/all" element={<AllUsres /> } />
+      <Route path="/edit/:id" element={<EditUser /> } />
 
       </Routes>
     </BrowserRouter>

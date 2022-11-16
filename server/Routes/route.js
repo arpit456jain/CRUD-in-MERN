@@ -29,4 +29,30 @@ router.get('/all',async(request,response)=>{
 
 })
 
+router.get('/:id',async(request,response)=>{
+    
+    try{
+        // const users = await postUser.find({username: 'jfyjkk'});
+        const user = await postUser.find({_id:request.params.id});
+        // const user = await postUser.findById(request.params.id);
+        response.status(200).json(user);
+    } catch (error){
+        response.status(409).json({ message: error.message});     
+    }
+
+})
+router.post('/:id',async(request,response)=>{
+    const user = request.body;
+    const newUser = new postUser(user);
+    
+    
+    try{
+        await postUser.updateOne({_id : request.params.id}, newUser);
+        
+        response.status(201).json(newUser);
+    } catch (error){
+        response.status(409).json({ message: error.message});     
+    }
+
+})
 export default router;
